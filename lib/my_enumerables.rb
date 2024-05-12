@@ -9,9 +9,7 @@ end
 class Array
   # Define my_each here
   def my_each
-    if !block_given?
-      return to_enum(:my_each)
-    end
+    return to_enum(:my_each) unless block_given?
 
     for elem in self
       yield elem
@@ -20,9 +18,7 @@ class Array
   end
 
   def my_each_with_index
-    if !block_given?
-      return to_enum(:my_each_with_index)
-    end
+    return to_enum(:my_each_with_index) unless block_given?
 
     i = 0
     while i < self.length do
@@ -33,9 +29,7 @@ class Array
   end
 
   def my_select
-    if !block_given?
-      return to_enum(:my_select)
-    end
+    return to_enum(:my_select) unless block_given?
 
     result = []
     for elem in self
@@ -47,9 +41,7 @@ class Array
   end
 
   def my_all?
-    if !block_given?
-      return true
-    end
+    return true unless block_given?
 
     for elem in self
       if !yield(elem)
@@ -60,9 +52,7 @@ class Array
   end
 
   def my_any?
-    if !block_given?
-      return true
-    end
+    return true unless block_given?
 
     for elem in self
       if yield(elem)
@@ -73,9 +63,7 @@ class Array
   end
 
   def my_none?
-    if !block_given?
-      return false
-    end
+    return false unless block_given?
 
     for elem in self
       if yield(elem)
@@ -97,9 +85,7 @@ class Array
   end
 
   def my_map
-    if !block_given?
-      return to_enum(:my_map)
-    end
+    return to_enum(:my_map) unless block_given?
 
     result = []
     for elem in self
