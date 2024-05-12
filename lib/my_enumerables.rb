@@ -41,10 +41,8 @@ class Array
   end
 
   def my_all?
-    return true unless block_given?
-
     for elem in self
-      if !yield(elem)
+      if block_given? && !yield(elem)
         return false
       end
     end
@@ -55,7 +53,7 @@ class Array
     return true unless block_given?
 
     for elem in self
-      if yield(elem)
+      if !block_given? || yield(elem)
         return true
       end
     end
@@ -63,10 +61,8 @@ class Array
   end
 
   def my_none?
-    return false unless block_given?
-
     for elem in self
-      if yield(elem)
+      if !block_given? || yield(elem)
         return false
       end
     end
